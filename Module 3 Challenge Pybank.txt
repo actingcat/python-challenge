@@ -22,7 +22,7 @@ Code
 #Module 3 Challenge Pybank
 import os
 import csv
-csvpath = r"C:\Users\pinkd\OneDrive\Desktop\budget_data.csv"
+csvpath = "Resources/budget_data.csv"
 
 print("Financial Analysis")
 print("~~~~~~~~~~~~~~~~~~~~")
@@ -30,34 +30,34 @@ print("~~~~~~~~~~~~~~~~~~~~")
 net_profit_loss = 0
 
 with open(csvpath, 'r') as file:
-    csv_reader = csv.reader(file)
-    next(csv_reader)
-    
-    for i, row in enumerate(csv_reader):
-        if i == 0:
-            net_profit_loss = float(row[1])
-        else:
-            net_profit_loss += float(row[1])
+ï¿½ ï¿½ csv_reader = csv.reader(file)
+ï¿½ ï¿½ next(csv_reader)
+ï¿½ ï¿½ 
+ï¿½ ï¿½ for i, row in enumerate(csv_reader):
+ï¿½ ï¿½ ï¿½ ï¿½ if i == 0:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ net_profit_loss = float(row[1])
+ï¿½ ï¿½ ï¿½ ï¿½ else:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ net_profit_loss += float(row[1])
 #The profit loss loop had to be set before the others so that we could calculate the changes
 total_months = 0
 changes_in_profit_loss = []
 
 with open(csvpath, 'r') as file:
-    csv_reader = csv.reader(file)
-    next(csv_reader)
-    
-    previous_profit_loss = None
-    
-    for i, row in enumerate(csv_reader):
-        current_profit_loss = float(row[1])
-        
-        if previous_profit_loss is not None:
-            change = current_profit_loss - previous_profit_loss
-            changes_in_profit_loss.append(change)
-            #We subtract the profit loss to find the change, that way we can average the changes
-        previous_profit_loss = current_profit_loss
-        total_months += 1
-        #I put the total months in the loop, but I can take total months outside of the loop and the rest of the code will still work
+ï¿½ ï¿½ csv_reader = csv.reader(file)
+ï¿½ ï¿½ next(csv_reader)
+ï¿½ ï¿½ 
+ï¿½ ï¿½ previous_profit_loss = None
+ï¿½ ï¿½ 
+ï¿½ ï¿½ for i, row in enumerate(csv_reader):
+ï¿½ ï¿½ ï¿½ ï¿½ current_profit_loss = float(row[1])
+ï¿½ ï¿½ ï¿½ ï¿½ 
+ï¿½ ï¿½ ï¿½ ï¿½ if previous_profit_loss is not None:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ change = current_profit_loss - previous_profit_loss
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ changes_in_profit_loss.append(change)
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ #We subtract the profit loss to find the change, that way we can average the changes
+ï¿½ ï¿½ ï¿½ ï¿½ previous_profit_loss = current_profit_loss
+ï¿½ ï¿½ ï¿½ ï¿½ total_months += 1
+ï¿½ ï¿½ ï¿½ ï¿½ #I put the total months in the loop, but I can take total months outside of the loop and the rest of the code will still work
 average_change = sum(changes_in_profit_loss) / len(changes_in_profit_loss)
 
 print(f"Total Months: {total_months}")
@@ -67,51 +67,51 @@ print(f"Average Change: ${average_change:.1f}")
 greatest_increase=0
 greatest_date="" #Greatest date has empty double quotes because the values in that column have months and days (words and numbers)
 with open(csvpath, 'r') as file:
-    csv_reader = csv.reader(file)
-    next(csv_reader)
-    
-    previous_profit_loss = None
-    
-    for i, row in enumerate(csv_reader):
-        current_profit_loss = float(row[1])
-        current_date= row[0]
-        #This tells the computer which rows to look through
-        if previous_profit_loss is not None:
-            change = current_profit_loss - previous_profit_loss
-            if change > greatest_increase:
-                greatest_increase = change
-                greatest_date=current_date
-        #This is stating that the computer should search the column to find the greatest increase in profit, based on the profit loss
-        previous_profit_loss = current_profit_loss
+ï¿½ ï¿½ csv_reader = csv.reader(file)
+ï¿½ ï¿½ next(csv_reader)
+ï¿½ ï¿½ 
+ï¿½ ï¿½ previous_profit_loss = None
+ï¿½ ï¿½ 
+ï¿½ ï¿½ for i, row in enumerate(csv_reader):
+ï¿½ ï¿½ ï¿½ ï¿½ current_profit_loss = float(row[1])
+ï¿½ ï¿½ ï¿½ ï¿½ current_date= row[0]
+ï¿½ ï¿½ ï¿½ ï¿½ #This tells the computer which rows to look through
+ï¿½ ï¿½ ï¿½ ï¿½ if previous_profit_loss is not None:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ change = current_profit_loss - previous_profit_loss
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ if change > greatest_increase:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ greatest_increase = change
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ greatest_date=current_date
+ï¿½ ï¿½ ï¿½ ï¿½ #This is stating that the computer should search the column to find the greatest increase in profit, based on the profit loss
+ï¿½ ï¿½ ï¿½ ï¿½ previous_profit_loss = current_profit_loss
 
 if greatest_increase > 0:
-    print(f"Greatest Increase in profits: {greatest_date}  (${greatest_increase})")
+ï¿½ ï¿½ print(f"Greatest Increase in profits: {greatest_date} ï¿½(${greatest_increase})")
 
 greatest_decrease = 0
 decrease_date = ""
 previous_profit_loss = None
 
 with open(csvpath, 'r') as file:
-    csv_reader = csv.reader(file)
-    next(csv_reader)
+ï¿½ ï¿½ csv_reader = csv.reader(file)
+ï¿½ ï¿½ next(csv_reader)
 
-    for row in csv_reader:
-        current_profit_loss = float(row[1])
-        current_date = row[0]
+ï¿½ ï¿½ for row in csv_reader:
+ï¿½ ï¿½ ï¿½ ï¿½ current_profit_loss = float(row[1])
+ï¿½ ï¿½ ï¿½ ï¿½ current_date = row[0]
 
-        if previous_profit_loss is not None:
-            change = current_profit_loss - previous_profit_loss
-            if change < greatest_decrease:
-                greatest_decrease = change
-                decrease_date = current_date
-        
-        previous_profit_loss = current_profit_loss
+ï¿½ ï¿½ ï¿½ ï¿½ if previous_profit_loss is not None:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ change = current_profit_loss - previous_profit_loss
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ if change < greatest_decrease:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ greatest_decrease = change
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ decrease_date = current_date
+ï¿½ ï¿½ ï¿½ ï¿½ 
+ï¿½ ï¿½ ï¿½ ï¿½ previous_profit_loss = current_profit_loss
 
-    if greatest_decrease < 0:
-        print(f"Greatest Decrease in profits: {decrease_date} (${greatest_decrease})")
+ï¿½ ï¿½ if greatest_decrease < 0:
+ï¿½ ï¿½ ï¿½ ï¿½ print(f"Greatest Decrease in profits: {decrease_date} (${greatest_decrease})")
 #This code functions the same as the previous, except "<" symbol is used to find the greatest decrease in profit change, above the 
 # ">" symbol was using to find the greatest increase
-    
+ï¿½ ï¿½ 
 Results
 
 
@@ -129,7 +129,7 @@ Results
 import os
 import csv
 
-csvpath=r"C:\Users\pinkd\Downloads\Module 3 Challeng Starter Code\Module3 Challenge Resources\PyPoll\Resources\election_data.csv"
+csvpath="Resources/election_data.csv"
 
 print("Election Results")
 print("~~~~~~~~~~~~~~~~")
@@ -138,22 +138,22 @@ total_votes = 0
 candidate_votes = {}
 
 with open(csvpath, 'r') as file:
-    csv_reader = csv.reader(file)
-    next(csv_reader)
+ï¿½ ï¿½ csv_reader = csv.reader(file)
+ï¿½ ï¿½ next(csv_reader)
 
-    for row in csv_reader:
-        total_votes += 1
-        candidate = row[2] 
-        if candidate in candidate_votes:
-            candidate_votes[candidate] += 1
-        else:
-            candidate_votes[candidate] = 1
+ï¿½ ï¿½ for row in csv_reader:
+ï¿½ ï¿½ ï¿½ ï¿½ total_votes += 1
+ï¿½ ï¿½ ï¿½ ï¿½ candidate = row[2] 
+ï¿½ ï¿½ ï¿½ ï¿½ if candidate in candidate_votes:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ candidate_votes[candidate] += 1
+ï¿½ ï¿½ ï¿½ ï¿½ else:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ candidate_votes[candidate] = 1
 #This makes sure that the code prints both the number of votes and the candidates name, by looping through both columns
 print(f"Total Votes: {total_votes}")
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 for candidate, votes in candidate_votes.items():
-    percentage = (votes / total_votes) * 100
-    print(f"{candidate}: {votes} {percentage:.1f}%")
+ï¿½ ï¿½ percentage = (votes / total_votes) * 100
+ï¿½ ï¿½ print(f"{candidate}: {votes} {percentage:.1f}%")
 #the for line makes sure that the percentage and print message are connected to the previous for loop
 #I rounded the percentage to reduce the number of decimals
 total_votes = 0
@@ -161,21 +161,21 @@ winner = {}
 candidate_votes = 0
 
 with open(csvpath, 'r') as file:
-    csv_reader = csv.reader(file)
-    next(csv_reader)
+ï¿½ ï¿½ csv_reader = csv.reader(file)
+ï¿½ ï¿½ next(csv_reader)
 
-    for row in csv_reader:
-        total_votes += 1
-        candidate = row[2]
+ï¿½ ï¿½ for row in csv_reader:
+ï¿½ ï¿½ ï¿½ ï¿½ total_votes += 1
+ï¿½ ï¿½ ï¿½ ï¿½ candidate = row[2]
 
-        if candidate in winner:
-            winner[candidate] += 1
-        else:
-            winner[candidate] = 1
+ï¿½ ï¿½ ï¿½ ï¿½ if candidate in winner:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ winner[candidate] += 1
+ï¿½ ï¿½ ï¿½ ï¿½ else:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ winner[candidate] = 1
 
-        if winner[candidate] > candidate_votes:
-            candidate_votes = winner[candidate]
-            winning_candidate = candidate
+ï¿½ ï¿½ ï¿½ ï¿½ if winner[candidate] > candidate_votes:
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ candidate_votes = winner[candidate]
+ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ ï¿½ winning_candidate = candidate
 #This for loop loops through to find the person with the total number of votes, combining "winner" and "candidate"
 print("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~")
 print(f"Winner: {winning_candidate}")

@@ -1,7 +1,7 @@
 #Module 3 Challenge
 import os
 import csv
-csvpath = r"C:\Users\pinkd\OneDrive\Desktop\budget_data.csv"
+csvpath = "Resources/budget_data.csv"
 
 print("Financial Analysis")
 print("~~~~~~~~~~~~~~~~~~~~")

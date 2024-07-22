@@ -1,9 +1,9 @@
 #Module 3 Challenge Pypoll
 import os
 import csv
-import math
+csvpath = "Resources/election_data.csv"
 
-csvpath=r"C:\Users\pinkd\Downloads\Module 3 Challeng Starter Code\Module3 Challenge Resources\PyPoll\Resources\election_data.csv"
+
 
 print("Election Results")
 print("~~~~~~~~~~~~~~~~")
